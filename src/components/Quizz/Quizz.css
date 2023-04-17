@@ -115,9 +115,16 @@
 .disabled {
   display: none;
 }
+.inputName {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
 #name {
   padding: 5px;
   border-radius: 5px;
+  border: none;
+  font-size: 16px;
 }
 .resultContainer {
   border: 2px solid pink;
