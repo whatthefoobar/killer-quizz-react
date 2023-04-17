@@ -116,6 +116,39 @@ const Quizz = ({ data }) => {
     console.log("form inputs:", formInputs);
   }, [score, userName, formInputs]);
 
+  const buttons = showResults ? (
+    <button type="submit" id="resultBtn">
+      Show Results
+    </button>
+  ) : (
+    <button
+      type="submit"
+      className="bloody-click"
+      id="nextBtn"
+      onClick={loadNextQuestion}
+    >
+      Next
+    </button>
+  );
+
+  const inputName = (
+    <div className="inputName ">
+      {/* <audio id="myAudio" src="./mp3/Loud_Bang.mp3"></audio> */}
+      <label htmlFor="name">Enter your name:</label>
+      <input
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+        type="text"
+        id="name"
+        name="name"
+        required
+        minLength="4"
+        maxLength="12"
+        size="18"
+      />
+    </div>
+  );
+
   return (
     <div className="background-img">
       {/* <section className="first-page">
@@ -151,38 +184,9 @@ const Quizz = ({ data }) => {
         <form className="quizzForm" onSubmit={handleSubmit}>
           {!showResults && QandA}
           <div className="controlBtns">
-            {showResults && (
-              <div className="inputName ">
-                {/* <audio id="myAudio" src="./mp3/Loud_Bang.mp3"></audio> */}
-                <label htmlFor="name">Enter your name:</label>
-                <input
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  minLength="4"
-                  maxLength="12"
-                  size="18"
-                />
-              </div>
-            )}
+            {showResults && inputName}
 
-            {showResults ? (
-              <button type="submit" id="resultBtn">
-                Show Results
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="bloody-click"
-                id="nextBtn"
-                onClick={loadNextQuestion}
-              >
-                Next
-              </button>
-            )}
+            {buttons}
 
             {/* <audio id="myAudio" src="./mp3/Loud_Bang.mp3"></audio> */}
           </div>
