@@ -87,19 +87,21 @@ const Quizz = ({ data }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    let a1 = answer1.current.checked;
-    let a2 = answer2.current.checked;
-    let a3 = answer3.current.checked;
-    let a4 = answer4.current.checked;
+    if (!showResults) {
+      let a1 = answer1.current.checked;
+      let a2 = answer2.current.checked;
+      let a3 = answer3.current.checked;
+      let a4 = answer4.current.checked;
 
-    if (a1 === true) {
-      setScore((prev) => prev + 1);
-    } else if (a2 === true) {
-      setScore((prev) => prev + 2);
-    } else if (a3 === true) {
-      setScore((prev) => prev + 3);
-    } else if (a4 === true) {
-      setScore((prev) => prev + 4);
+      if (a1 === true) {
+        setScore((prev) => prev + 1);
+      } else if (a2 === true) {
+        setScore((prev) => prev + 2);
+      } else if (a3 === true) {
+        setScore((prev) => prev + 3);
+      } else if (a4 === true) {
+        setScore((prev) => prev + 4);
+      } else return score;
     }
 
     setFormInputs({
@@ -167,7 +169,7 @@ const Quizz = ({ data }) => {
               </div>
             )}
 
-            {showResults === 9 ? (
+            {showResults ? (
               <button type="submit" id="resultBtn">
                 Show Results
               </button>
