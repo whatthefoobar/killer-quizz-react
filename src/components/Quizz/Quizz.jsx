@@ -4,10 +4,10 @@ import "./Quizz.css";
 const Quizz = ({ data }) => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const answer1 = useRef();
-  const answer2 = useRef();
-  const answer3 = useRef();
-  const answer4 = useRef();
+  let answer1 = useRef();
+  let answer2 = useRef();
+  let answer3 = useRef();
+  let answer4 = useRef();
   const name = useRef();
 
   // console.log(data);
@@ -23,7 +23,7 @@ const Quizz = ({ data }) => {
             type="radio"
             id="a1"
             name="answer"
-            value="answer 1"
+            value={data[index].answers[0]}
             ref={answer1}
           />
           <label htmlFor="a1" className="answer1">
@@ -35,7 +35,7 @@ const Quizz = ({ data }) => {
             type="radio"
             id="a2"
             name="answer"
-            value="answer 2"
+            value={data[index].answers[1]}
             ref={answer2}
           />
           <label htmlFor="a2" className="answer2">
@@ -47,7 +47,7 @@ const Quizz = ({ data }) => {
             type="radio"
             id="a3"
             name="answer"
-            value="answer 3"
+            value={data[index].answers[2]}
             ref={answer3}
           />
           <label htmlFor="a3" className="answer3">
@@ -59,7 +59,7 @@ const Quizz = ({ data }) => {
             type="radio"
             id="a4"
             name="answer"
-            value="answer 4"
+            value={data[index].answers[3]}
             ref={answer4}
           />
           <label htmlFor="a4" className="answer4">
@@ -80,18 +80,22 @@ const Quizz = ({ data }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    let a1 = answer1.current.checked;
+    let a2 = answer2.current.checked;
+    let a3 = answer3.current.checked;
+    let a4 = answer4.current.checked;
 
-    let a1 = answer1.current.value;
-    let answer1Input = +a1;
-    let a2 = answer2.current.value;
-    let answer2Input = +a2;
-    let a3 = answer3.current.value;
-    let answer3Input = +a3;
-    let a4 = answer4.current.value;
-    let answer4Input = +a4;
-
-    console.log(answer1Input, answer2Input, answer3Input, answer4Input);
+    if (a1 === true) {
+      setScore((prev) => prev + 1);
+    } else if (a2 === true) {
+      setScore((prev) => prev + 2);
+    } else if (a3 === true) {
+      setScore((prev) => prev + 3);
+    } else if (a4 === true) {
+      setScore((prev) => prev + 4);
+    } else return;
   };
+  console.log(score);
 
   return (
     <div className="background-img">
@@ -151,7 +155,7 @@ const Quizz = ({ data }) => {
               </button>
             ) : (
               <button
-                type="button"
+                type="submit"
                 className="bloody-click"
                 id="mextBtn"
                 onClick={loadNextQuestion}
