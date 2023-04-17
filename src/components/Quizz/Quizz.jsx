@@ -1,14 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Quizz.css";
 
 const Quizz = ({ data }) => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [formInputs, setFormInputs] = useState({
+    score: 0,
+    name: "",
+  });
+  // const [hideButton, setHideButton] = useState(true);
   let answer1 = useRef();
   let answer2 = useRef();
   let answer3 = useRef();
   let answer4 = useRef();
-  const name = useRef();
 
   // console.log(data);
   let QandA; // initially i'm only loading first question and its 4 answers then moving the index load the next
@@ -72,10 +78,11 @@ const Quizz = ({ data }) => {
     );
 
   const loadNextQuestion = () => {
-    if (index > 9) {
-      return;
-    } else {
+    if (index < 9) {
       setIndex((prev) => prev + 1);
+    } else {
+      setShowResults(true);
+      return;
     }
   };
   const handleSubmit = (e) => {
@@ -93,9 +100,19 @@ const Quizz = ({ data }) => {
       setScore((prev) => prev + 3);
     } else if (a4 === true) {
       setScore((prev) => prev + 4);
-    } else return;
+    }
+
+    setFormInputs({
+      score: score,
+      name: userName,
+    });
   };
-  console.log(score);
+
+  useEffect(() => {
+    console.log("score:", score);
+    console.log("username:", userName);
+    console.log("form inputs:", formInputs);
+  }, [score, userName, formInputs]);
 
   return (
     <div className="background-img">
@@ -130,14 +147,15 @@ const Quizz = ({ data }) => {
           </div>
         </div> */}
         <form className="quizzForm" onSubmit={handleSubmit}>
-          {QandA}
+          {!showResults && QandA}
           <div className="controlBtns">
-            {index === 9 && (
+            {showResults && (
               <div className="inputName ">
                 {/* <audio id="myAudio" src="./mp3/Loud_Bang.mp3"></audio> */}
                 <label htmlFor="name">Enter your name:</label>
                 <input
-                  ref={name}
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   id="name"
                   name="name"
@@ -149,7 +167,7 @@ const Quizz = ({ data }) => {
               </div>
             )}
 
-            {index === 9 ? (
+            {showResults === 9 ? (
               <button type="submit" id="resultBtn">
                 Show Results
               </button>
@@ -157,7 +175,7 @@ const Quizz = ({ data }) => {
               <button
                 type="submit"
                 className="bloody-click"
-                id="mextBtn"
+                id="nextBtn"
                 onClick={loadNextQuestion}
               >
                 Next
