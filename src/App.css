@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("http://fonts.cdnfonts.com/css/dinobots");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: antiquewhite;
+  overflow-y: hidden;
+  font-family: "Varela Round", sans-serif;
+}

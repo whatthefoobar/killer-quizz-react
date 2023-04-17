@@ -1,0 +1,17 @@
+.blood-svg {
+  width: 50vmax;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: -1;
+}
+
+.blood-splash-2 {
+  width: 80vmax;
+}
+
+.blood-splash-3 {
+  width: 60vmax;
+}
