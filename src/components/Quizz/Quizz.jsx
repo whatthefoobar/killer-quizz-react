@@ -4,22 +4,21 @@ import "./Quizz.css";
 const Quizz = ({ data }) => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [showLastPage, setshowLastPage] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [userName, setUserName] = useState("");
   const [formInputs, setFormInputs] = useState({
     score: 0,
     name: "",
   });
-  // const [hideButton, setHideButton] = useState(true);
+
   let answer1 = useRef();
   let answer2 = useRef();
   let answer3 = useRef();
   let answer4 = useRef();
 
-  // console.log(data);
-  let QandA; // initially i'm only loading first question and its 4 answers then moving the index load the next
-
-  QandA =
+  // initially i'm only loading first question and its 4 answers then incrementing index to load the next
+  let QandA =
     data.length > 0 ? (
       <>
         <h4 className="question">{data[index].question}</h4>
@@ -81,13 +80,14 @@ const Quizz = ({ data }) => {
     if (index < 9) {
       setIndex((prev) => prev + 1);
     } else {
-      setShowResults(true);
+      setshowLastPage(true);
       return;
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!showResults) {
+    if (!showLastPage) {
       let a1 = answer1.current.checked;
       let a2 = answer2.current.checked;
       let a3 = answer3.current.checked;
@@ -114,9 +114,12 @@ const Quizz = ({ data }) => {
     console.log("score:", score);
     console.log("username:", userName);
     console.log("form inputs:", formInputs);
+    if (formInputs.name.length > 0) {
+      setShowResults(true);
+    }
   }, [score, userName, formInputs]);
 
-  const buttons = showResults ? (
+  const buttons = showLastPage ? (
     <button type="submit" id="resultBtn">
       Show Results
     </button>
@@ -148,6 +151,7 @@ const Quizz = ({ data }) => {
       />
     </div>
   );
+  const formClasses = showResults ? "quizzForm disabled" : "quizzForm";
 
   return (
     <div className="background-img">
@@ -181,30 +185,35 @@ const Quizz = ({ data }) => {
             </ul>
           </div>
         </div> */}
-        <form className="quizzForm" onSubmit={handleSubmit}>
-          {!showResults && QandA}
+
+        <form className={formClasses} onSubmit={handleSubmit}>
+          {!showLastPage && QandA}
           <div className="controlBtns">
-            {showResults && inputName}
+            {showLastPage && inputName}
 
             {buttons}
 
             {/* <audio id="myAudio" src="./mp3/Loud_Bang.mp3"></audio> */}
           </div>
         </form>
-        {/* <div className="resultContainer disabled">
-          <div className="img">
-           
-            <img src="./img/1.gif" alt="" />
-          </div>
+        {showResults && (
+          <div className="resultContainer">
+            <div className="img">
+              <img
+                src="https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg"
+                alt="result"
+              />
+            </div>
 
-          <h3 className="resultHeader">Result description here</h3>
-          <p className="resultParagraph">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ab,
-            nam eius modi provident officiis molestiae blanditiis excepturi
-            similique veritatis aspernatur ducimus ut quas ipsa. Voluptatum,
-            dignissimos! Repellendus, quia exercitationem.
-          </p>
-        </div> */}
+            <h3 className="resultHeader">Result description here</h3>
+            <p className="resultParagraph">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ab,
+              nam eius modi provident officiis molestiae blanditiis excepturi
+              similique veritatis aspernatur ducimus ut quas ipsa. Voluptatum,
+              dignissimos! Repellendus, quia exercitationem.
+            </p>
+          </div>
+        )}
       </section>
     </div>
   );
