@@ -7,7 +7,9 @@ import { collection, getDocs } from "firebase/firestore";
 
 function App() {
   const [quizzData, setQuizzData] = useState([]);
+  const [resultCategories, setResultCategories] = useState([]);
   const qnaCollectionRef = collection(db, "questions");
+  const resultCategCollectionRef = collection(db, "result-categories");
 
   useEffect(() => {
     const fetchQuizzData = async () => {
@@ -17,11 +19,19 @@ function App() {
     fetchQuizzData();
   }, []);
 
-  // console.log(quizzData);
+  useEffect(() => {
+    const fetchResultCategories = async () => {
+      const data = await getDocs(resultCategCollectionRef);
+      setResultCategories(
+        data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
+    fetchResultCategories();
+  }, []);
 
   return (
     <div className="App">
-      <Quizz data={quizzData} />
+      <Quizz data={quizzData} results={resultCategories} />
       {/* <SvgAnimation /> */}
     </div>
   );

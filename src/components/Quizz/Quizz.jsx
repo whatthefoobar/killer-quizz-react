@@ -1,15 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import "./Quizz.css";
+import p1 from "../../assets/img/1.gif";
+import p2 from "../../assets/img/2.gif";
+import p3 from "../../assets/img/3.gif";
+import p4 from "../../assets/img/4.gif";
+import { db } from "../../firebase-config";
+import { collection, addDoc } from "firebase/firestore";
 
-const Quizz = ({ data }) => {
+const Quizz = ({ data, results }) => {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [userName, setUserName] = useState("");
   const [showLastPage, setshowLastPage] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [formInputs, setFormInputs] = useState({
-    score: 0,
-    name: "",
+  const [result, setResult] = useState({
+    img: "",
+    title: "",
+    description: "",
   });
 
   let answer1 = useRef();
@@ -85,6 +92,47 @@ const Quizz = ({ data }) => {
     }
   };
 
+  const storeInDb = async (name, score) => {
+    if (name === "" || score === 0) return;
+    try {
+      await addDoc(collection(db, "scores"), {
+        name: name,
+        score: score,
+      });
+      console.log("this ran!");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  const showResultCategory = (score) => {
+    if (score > 0 && score <= 10) {
+      setResult({
+        img: p1,
+        title: results[3].title,
+        description: results[3].description,
+      });
+    } else if (score > 10 && score <= 20) {
+      setResult({
+        img: p2,
+        title: results[0].title,
+        description: results[0].description,
+      });
+    } else if (score > 20 && score <= 30) {
+      setResult({
+        img: p3,
+        title: results[2].title,
+        description: results[2].description,
+      });
+    } else if (score > 10 && score <= 40) {
+      setResult({
+        img: p4,
+        title: results[1].title,
+        description: results[1].description,
+      });
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!showLastPage) {
@@ -104,20 +152,18 @@ const Quizz = ({ data }) => {
       } else return score;
     }
 
-    setFormInputs({
-      score: score,
-      name: userName,
-    });
+    storeInDb(userName, score); // this doesn't work anymore
+    showResultCategory(score);
   };
 
   useEffect(() => {
     console.log("score:", score);
     console.log("username:", userName);
-    console.log("form inputs:", formInputs);
-    if (formInputs.name.length > 0) {
+    // console.log("form inputs:", formInputs);
+    if (userName.length > 0) {
       setShowResults(true);
     }
-  }, [score, userName, formInputs]);
+  }, [score, userName]);
 
   const buttons = showLastPage ? (
     <button type="submit" id="resultBtn">
@@ -199,19 +245,11 @@ const Quizz = ({ data }) => {
         {showResults && (
           <div className="resultContainer">
             <div className="img">
-              <img
-                src="https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg"
-                alt="result"
-              />
+              <img src={result.img} alt="result" />
             </div>
 
-            <h3 className="resultHeader">Result description here</h3>
-            <p className="resultParagraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ab,
-              nam eius modi provident officiis molestiae blanditiis excepturi
-              similique veritatis aspernatur ducimus ut quas ipsa. Voluptatum,
-              dignissimos! Repellendus, quia exercitationem.
-            </p>
+            <h3 className="resultHeader">{result.title}</h3>
+            <p className="resultParagraph">{result.description}</p>
           </div>
         )}
       </section>
