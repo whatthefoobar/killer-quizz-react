@@ -8,7 +8,15 @@
 
 body {
   background-color: #333;
-  color: antiquewhite;
+  /* color: antiquewhite; */
+  color: #333;
   overflow-y: hidden;
   font-family: "Varela Round", sans-serif;
+}
+
+.form {
+  margin: 15vh auto;
+  width: 700px;
+  border: 2px solid black;
+  padding: 10px;
 }
