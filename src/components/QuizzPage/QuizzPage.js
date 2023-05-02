@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { db } from "../../firebase-config";
 // import { collection, addDoc } from "firebase/firestore";
 // import Leaderboard from "../Leaderboard/Leaderboard";
-// import ResultPage from "../ResultPage/ResultPage";
-// import p1 from "../../assets/img/1.gif";
-// import p2 from "../../assets/img/2.gif";
-// import p3 from "../../assets/img/3.gif";
-// import p4 from "../../assets/img/4.gif";
 import Form from "../Form/Form";
 
 const QuizzPage = ({ data, results }) => {
@@ -75,6 +70,10 @@ const QuizzPage = ({ data, results }) => {
       return <Form formData={formData} setFormData={setFormData} />;
     }
   };
+
+  useEffect(() => {
+    console.log("form data:", formData);
+  }, [formData]);
 
   // still have error with uploading score for every q and a so, scrap this and do a multistep form and hopefullly gather all andswers before submit
 
