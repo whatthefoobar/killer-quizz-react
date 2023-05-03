@@ -9,19 +9,21 @@ const Form = ({ formData, setFormData, answers }) => {
   const [state, dispatch] = useReducer(formInputReducer, INITIAL_STATE);
   const { score, name } = state;
 
-  const getAnswer = (e) => {
+  const handleChangeAnswer = (e) => {
     console.log(e.target.id);
     dispatch({ type: "GET_ANSWER", id: e.target.id });
     setFormData({ ...state });
   };
-  const getName = (e) => {
+  const handleChangeName = (e) => {
     dispatch({ type: "GET_NAME", name: e.target.value });
     setFormData({ ...state });
   };
 
   useEffect(() => {
+    setFormData({ score, name });
     console.log(score);
     console.log(name);
+    console.log(formData);
   }, [score, name]);
 
   return (
@@ -35,7 +37,7 @@ const Form = ({ formData, setFormData, answers }) => {
               id="a1"
               name="answer"
               value={answers?.answers[0]}
-              onChange={getAnswer}
+              onChange={handleChangeAnswer}
             />
             <span className="checkmark"></span>
           </label>
@@ -46,7 +48,7 @@ const Form = ({ formData, setFormData, answers }) => {
               id="a2"
               name="answer"
               value={answers?.answers[1]}
-              onChange={getAnswer}
+              onChange={handleChangeAnswer}
             />
             <span className="checkmark"></span>
           </label>
@@ -57,7 +59,7 @@ const Form = ({ formData, setFormData, answers }) => {
               id="a3"
               name="answer"
               value={answers?.answers[2]}
-              onChange={getAnswer}
+              onChange={handleChangeAnswer}
             />
             <span className="checkmark"></span>
           </label>
@@ -68,7 +70,7 @@ const Form = ({ formData, setFormData, answers }) => {
               id="a4"
               name="answer"
               value={answers?.answers[3]}
-              onChange={getAnswer}
+              onChange={handleChangeAnswer}
             />
             <span className="checkmark"></span>
           </label>
@@ -84,7 +86,7 @@ const Form = ({ formData, setFormData, answers }) => {
               minLength="4"
               maxLength="12"
               size="18"
-              onChange={getName}
+              onChange={handleChangeName}
             />
           </label>
         </div>

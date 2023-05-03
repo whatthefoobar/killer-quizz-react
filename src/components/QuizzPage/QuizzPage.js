@@ -72,6 +72,14 @@ const QuizzPage = ({ data, results }) => {
       return <Form formData={formData} setFormData={setFormData} />;
     }
   };
+  const handleSubmitForm = () => {
+    if (page === FormTitles.length - 1) {
+      alert("FORM SUBMITTED");
+      console.log(formData);
+    } else {
+      setPage((currPage) => currPage + 1);
+    }
+  };
 
   return (
     <section className="page-two">
@@ -91,16 +99,7 @@ const QuizzPage = ({ data, results }) => {
             >
               Prev
             </button>
-            <button
-              onClick={() => {
-                if (page === FormTitles.length - 1) {
-                  alert("FORM SUBMITTED");
-                  console.log(formData);
-                } else {
-                  setPage((currPage) => currPage + 1);
-                }
-              }}
-            >
+            <button onClick={handleSubmitForm}>
               {page === FormTitles.length - 1 ? "Submit" : "Next"}
             </button>
           </div>
