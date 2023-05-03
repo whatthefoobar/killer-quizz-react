@@ -21,6 +21,9 @@ body {
   padding: 10px;
 }
 
+.header h1 {
+  text-align: center;
+}
 .footer {
   display: flex;
   justify-content: center;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Quizz from "./components/Quizz/Quizz";
-// import SvgAnimation from "./components/SvgAnimation/SvgAnimation";
 import { db } from "./firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 

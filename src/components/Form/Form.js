@@ -1,47 +1,28 @@
-import React, { useEffect, useRef } from "react";
-import { useState } from "react";
+import React, { useEffect, useReducer } from "react";
+
 import "./Form.css";
+import { INITIAL_STATE, formInputReducer } from "../../util/formReducer";
+// import { formActions } from "../../store/formSlice";
+// import { useDispatch, useSelector } from "react-redux";
 
 const Form = ({ formData, setFormData, answers }) => {
-  const [score, setScore] = useState(0);
+  const [state, dispatch] = useReducer(formInputReducer, INITIAL_STATE);
+  const { score, name } = state;
 
   const getAnswer = (e) => {
-    console.log("is checked?", e.target.checked);
-    console.log("id:", e.target.id);
-    if (e.target.checked) {
-      if (e.target.id === "a1") {
-        setScore((score) => score + 1);
-      } else if (e.target.id === "a2") {
-        setScore((score) => score + 2);
-      } else if (e.target.id === "a3") {
-        setScore((score) => score + 3);
-      } else setScore((score) => score + 4);
-    }
-    setFormData({ ...formData, score: score });
+    console.log(e.target.id);
+    dispatch({ type: "GET_ANSWER", id: e.target.id });
+    setFormData({ ...state });
+  };
+  const getName = (e) => {
+    dispatch({ type: "GET_NAME", name: e.target.value });
+    setFormData({ ...state });
   };
 
-  //   const checkAnswer = () => {
-  //     let a1 = answer1.current.checked;
-  //     let a2 = answer2.current.checked;
-  //     let a3 = answer3.current.checked;
-  //     let a4 = answer4.current.checked;
-
-  //     if (a1 === true) {
-  //       setScore((prevScore) => prevScore + 1);
-  //     } else if (a2 === true) {
-  //       setScore((prevScore) => prevScore + 2);
-
-  //       //   setFormData({ ...formData, score: (score) => score + 2 });
-  //     } else if (a3 === true) {
-  //       setScore((prevScore) => prevScore + 3);
-
-  //       //   setFormData({ ...formData, score: (score) => score + 3 });
-  //     } else if (a4 === true) {
-  //       setScore((prevScore) => prevScore + 4);
-
-  //       //   setFormData({ ...formData, score: (score) => score + 4 });
-  //     } else return score;
-  //   };
+  useEffect(() => {
+    console.log(score);
+    console.log(name);
+  }, [score, name]);
 
   return (
     <form className="quizzForm">
@@ -94,22 +75,18 @@ const Form = ({ formData, setFormData, answers }) => {
         </div>
       ) : (
         <div className="inputName ">
-          <label htmlFor="name">Enter your name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            minLength="4"
-            maxLength="12"
-            size="18"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                name: e.target.value,
-              })
-            }
-          />
+          <label htmlFor="name">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              minLength="4"
+              maxLength="12"
+              size="18"
+              onChange={getName}
+            />
+          </label>
         </div>
       )}
     </form>
