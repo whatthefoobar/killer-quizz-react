@@ -1,9 +1,6 @@
 import React, { useEffect, useReducer } from "react";
-
 import "./Form.css";
 import { INITIAL_STATE, formInputReducer } from "../../util/formReducer";
-// import { formActions } from "../../store/formSlice";
-// import { useDispatch, useSelector } from "react-redux";
 
 const Form = ({ formData, setFormData, answers }) => {
   const [state, dispatch] = useReducer(formInputReducer, INITIAL_STATE);
