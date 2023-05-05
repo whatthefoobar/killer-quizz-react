@@ -17,6 +17,7 @@ const QuizzPage = ({ data, results }) => {
     "Enter your name: ",
   ];
 
+  // ########## OLD ##########
   const FormTitles = [
     data[0]?.question,
     data[1]?.question,
@@ -34,6 +35,7 @@ const QuizzPage = ({ data, results }) => {
   // ########## SUGGESTION ##########
   const isLastPage = page > data.length;
 
+  // ########## OLD ##########
   const PageDisplay = () => {
     //start from 0 to match index for FormTitles
     if (page === 0) {
@@ -110,6 +112,7 @@ const QuizzPage = ({ data, results }) => {
                 answers={data[page]}
               />
             )}
+            {/* ########## OLD ########## */}
             {/* {PageDisplay()} */}
           </div>
 
