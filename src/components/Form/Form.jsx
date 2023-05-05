@@ -24,6 +24,12 @@ const Form = ({ formData, setFormData, answers }) => {
     console.log(formData);
   }, [score, name]);
 
+  // ########## SUGGESTION ##########
+  useEffect(() => {
+    // Here is something you need to do to solve your
+    // radio button bug.
+  }, [answers]);
+
   return (
     <form className="quizzForm">
       {answers ? (
@@ -36,6 +42,8 @@ const Form = ({ formData, setFormData, answers }) => {
               name="answer"
               value={answers?.answers[0]}
               onChange={handleChangeAnswer}
+              // ###### HINT ######
+              // checked={true // false}
             />
             <span className="checkmark"></span>
           </label>
