@@ -11,6 +11,7 @@ const Form = ({ formData, setFormData, answers }) => {
     dispatch({ type: "GET_ANSWER", id: e.target.id });
     setFormData({ ...state });
   };
+
   const handleChangeName = (e) => {
     dispatch({ type: "GET_NAME", name: e.target.value });
     setFormData({ ...state });
