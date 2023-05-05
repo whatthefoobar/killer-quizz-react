@@ -3,7 +3,7 @@ export const INITIAL_STATE = {
   name: "",
 };
 
-const mapAnswerTypeToNewState = {
+const mapAnswerTypeToStateFn = {
   a1: (state) => ({
     ...state,
     score: state.score + 1,
@@ -25,7 +25,7 @@ const mapAnswerTypeToNewState = {
 export const formInputReducer = (state, action) => {
   switch (action.type) {
     case "GET_ANSWER":
-      const stateFn = mapAnswerTypeToNewState[action.id];
+      const stateFn = mapAnswerTypeToStateFn[action.id];
       return stateFn ? stateFn(state) : state;
     // {
     //   // let answerType = action.id;
