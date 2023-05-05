@@ -25,7 +25,8 @@ const mapAnswerTypeToNewState = {
 export const formInputReducer = (state, action) => {
   switch (action.type) {
     case "GET_ANSWER":
-      return mapAnswerTypeToNewState[action.id](state);
+      const stateFn = mapAnswerTypeToNewState[action.id];
+      return stateFn ? stateFn(state) : state;
     // {
     //   // let answerType = action.id;
     //   // if (answerType === "a1") {
