@@ -11,6 +11,12 @@ const QuizzPage = ({ data, results }) => {
     score: 0,
   });
 
+  // ########## SUGGESTION ##########
+  const FormTitles_SUGGESTION = [
+    ...data.map((entry) => entry.question),
+    "Enter your name: ",
+  ];
+
   const FormTitles = [
     data[0]?.question,
     data[1]?.question,
@@ -24,6 +30,9 @@ const QuizzPage = ({ data, results }) => {
     data[9]?.question,
     "Enter your name: ",
   ];
+
+  // ########## SUGGESTION ##########
+  const isLastPage = page > data.length;
 
   const PageDisplay = () => {
     //start from 0 to match index for FormTitles
@@ -72,6 +81,7 @@ const QuizzPage = ({ data, results }) => {
       return <Form formData={formData} setFormData={setFormData} />;
     }
   };
+
   const handleSubmitForm = () => {
     if (page === FormTitles.length - 1) {
       alert("FORM SUBMITTED");
@@ -89,7 +99,20 @@ const QuizzPage = ({ data, results }) => {
           <div className="header">
             <h1>{FormTitles[page]}</h1>
           </div>
-          <div className="body">{PageDisplay()}</div>
+          <div className="body">
+            {/* ########## SUGGESTION ########## */}
+            {isLastPage ? (
+              <Form formData={formData} setFormData={setFormData} />
+            ) : (
+              <Form
+                formData={formData}
+                setFormData={setFormData}
+                answers={data[page]}
+              />
+            )}
+            {/* {PageDisplay()} */}
+          </div>
+
           <div className="footer">
             <button
               disabled={page === 0}
