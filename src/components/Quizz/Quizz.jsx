@@ -1,14 +1,13 @@
 import "./Quizz.css";
-
-import Intro from "../Intro/Intro";
-import QuizzPage from "../QuizzPage/QuizzPage";
+import QuizzPage from "../../pages/QuizzPage/QuizzPage";
+import IntroPage from "../../pages/IntroPage/IntroPage";
 
 const Quizz = ({ data, results }) => {
   // const formClasses = showResults ? "quizzForm disabled" : "quizzForm";
-
+  // console.log("data from fb:", data);
   return (
     <div className="background-img">
-      {/* <Intro /> */}
+      <IntroPage />
       <QuizzPage data={data} results={results} />
     </div>
   );

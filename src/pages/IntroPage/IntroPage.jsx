@@ -1,4 +1,4 @@
-const Intro = () => {
+const IntroPage = () => {
   return (
     <section className="first-page">
       <div className="intro">
@@ -19,4 +19,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default IntroPage;

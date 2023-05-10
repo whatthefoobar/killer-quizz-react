@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Quizz from "./components/Quizz/Quizz";
 import { db } from "./firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import QuizzPage from "./pages/QuizzPage/QuizzPage";
 
 function App() {
   const [quizzData, setQuizzData] = useState([]);
@@ -13,9 +13,12 @@ function App() {
   useEffect(() => {
     const fetchQuizzData = async () => {
       const data = await getDocs(qnaCollectionRef);
-      setQuizzData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setQuizzData(
+        data.docs.map((doc) => ({ ...doc.data(), id: doc.id, answer: "" }))
+      );
     };
     fetchQuizzData();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -26,12 +29,15 @@ function App() {
       );
     };
     fetchResultCategories();
+    // eslint-disable-next-line
   }, []);
 
+  // might build a router with the pages In question, not sure if needed for a small project
+  // as of now i need an intro page with ian intro and a start button that leads to the quizz
+  // once we go through all questions and we submit we should get to a result page
   return (
     <div className="App">
-      <Quizz data={quizzData} results={resultCategories} />
-      {/* <SvgAnimation /> */}
+      <QuizzPage data={quizzData} results={resultCategories} />
     </div>
   );
 }
