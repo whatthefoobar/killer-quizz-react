@@ -1,0 +1,38 @@
+.questionnaire {
+  border: 2px solid pink;
+  padding: 20px;
+  width: 600px;
+  margin: 15vh auto;
+}
+
+.questionnaire form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.questionnaire--qna {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.questionnaire--qna h2 {
+  margin-bottom: 10px;
+}
+.questionnaire--qna label {
+  font-size: 20px;
+}
+
+.questionnaire--buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.questionnaire--buttons button {
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+}
