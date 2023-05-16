@@ -1,4 +1,4 @@
-A pålayful not to ne taken seriously React questionnaire app where user answers a set of questions rendered one at a time and inputs their name and will receive based on the answers selected a result : which serial killer they would be.
+Combining my passion for psychology and true crime I decided to build a questionaire to determine your if you too could be a serial killer and if so which one. Spoiler alert: all answers generate one type of serial killer from real life of fiction. A playful not to be taken too seriously React questionnaire app where user answers a set of questions rendered one at a time and inputs their name and will receive based on the answers selected a result : which serial killer they would be.
 
 Currently works:
 
