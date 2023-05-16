@@ -40,7 +40,6 @@ const Questionnaire = () => {
       `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
     );
     console.log(`Name: ${state.name}, Score: ${state.score}`);
-    setShowResult(true);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -58,18 +57,7 @@ const Questionnaire = () => {
       <form onSubmit={handleSubmit}>
         <div className="questionnaire--qna">
           <h2>{currentQuestion.question}</h2>
-          {currentQuestion.input ? (
-            <label htmlFor="name">
-              <input
-                id="name"
-                type="text"
-                minLength="4"
-                maxLength="12"
-                value={state.name}
-                onChange={handleNameChange}
-              />
-            </label>
-          ) : (
+          {!currentQuestion.input ? (
             currentQuestion.options.map((option) => (
               <div key={option.value}>
                 <label htmlFor={option.value}>
@@ -85,6 +73,17 @@ const Questionnaire = () => {
                 </label>
               </div>
             ))
+          ) : (
+            <label htmlFor="name">
+              <input
+                id="name"
+                type="text"
+                minLength="4"
+                maxLength="12"
+                value={state.name}
+                onChange={handleNameChange}
+              />
+            </label>
           )}
         </div>
         <div className="questionnaire--buttons">
@@ -101,7 +100,7 @@ const Questionnaire = () => {
             <button type="submit">Submit</button>
           )}
         </div>
-      </form>
+      </form>{" "}
       {showResult && result}
     </div>
   );

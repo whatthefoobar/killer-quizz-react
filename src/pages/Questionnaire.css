@@ -21,8 +21,13 @@
 .questionnaire--qna h2 {
   margin-bottom: 10px;
 }
+.questionnaire--qna input {
+  padding: 5px 10px;
+  font-size: 18px;
+  text-align: center;
+}
 .questionnaire--qna label {
-  font-size: 20px;
+  align-self: center;
 }
 
 .questionnaire--buttons {
@@ -37,6 +42,9 @@
   border: none;
 }
 /* result box styling */
+.resultBox {
+  margin-top: 40px;
+}
 .result-img {
   width: 100%;
   padding-bottom: 30px;
