@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import "./Questionnaire.css";
 import p1 from "../assets/1.gif";
 import p2 from "../assets/2.gif";
@@ -182,10 +182,9 @@ let resultCategories = [
 ];
 
 const Questionnaire = () => {
-  let image, title, description;
   const [state, dispatch] = useReducer(formReducer, initialState);
-
   const { currentQuestionIndex, answers } = state;
+  const [showResult, setShowResult] = useState(false);
 
   const handleAnswerSelect = (answer) => {
     dispatch({ type: "SELECT_ANSWER", payload: answer });
@@ -203,42 +202,32 @@ const Questionnaire = () => {
     dispatch({ type: "SET_NAME", payload: e.target.value });
   };
 
-  const showResultCategory = (score) => {
-    if (score > 0 && score <= 10) {
-      image = p1;
-      title = resultCategories[0].title;
-      description = resultCategories[0].description;
-      return [image, title, description];
-    } else if (score > 10 && score <= 20) {
-      image = p2;
-      title = resultCategories[1].title;
-      description = resultCategories[1].description;
-      return [image, title, description];
-    } else if (score > 20 && score <= 30) {
-      image = p3;
-      title = resultCategories[2].title;
-      description = resultCategories[2].description;
-      return [image, title, description];
-    } else if (score > 10 && score <= 40) {
-      image = p4;
-      title = resultCategories[3].title;
-      description = resultCategories[3].description;
-      return [image, title, description];
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "CALCULATE_SCORE" });
-    console.log(showResultCategory(state.score));
+    // displatch a calculate result reducer action that returns object values to populate our result box
     console.log(`Name: ${state.name}, Score: ${state.score}`);
+    setShowResult(true);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
 
+  // const result = (
+  //   <div className="resultBox">
+  //     <img
+  //       className="result-img"
+  //       src={
+  //         "https://media.istockphoto.com/photos/murder-kill-and-people-concept-criminal-or-murderer-wearing-a-mask-in-picture-id1146265183?k=6&m=1146265183&s=612x612&w=0&h=z8Qwv-MP3ygKNsWH-bJEihi63AUjyqYYeER5TSR1sMU="
+  //       }
+  //       alt="result"
+  //     />
+  //     <h2>Test result</h2>
+  //     <p>Test description</p>
+  //   </div>
+  // );
+
   return (
     <div className="questionnaire">
-      {/* <h1>Questionnaire</h1> */}
       <form onSubmit={handleSubmit}>
         <div className="questionnaire--qna">
           <h2>{currentQuestion.question}</h2>
@@ -286,6 +275,7 @@ const Questionnaire = () => {
           )}
         </div>
       </form>
+      {showResult && "Result here"}
     </div>
   );
 };
