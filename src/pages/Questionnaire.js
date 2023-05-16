@@ -5,11 +5,6 @@ import { questions } from "../util/data";
 import { initialState, formReducer } from "../util/formReducer";
 
 const Questionnaire = () => {
-  // const [result, setResult] = useState({
-  //   image: "",
-  //   title: "",
-  //   description: "",
-  // });
   const [state, dispatch] = useReducer(formReducer, initialState);
   const { currentQuestionIndex, answers } = state;
   const [showResult, setShowResult] = useState(false);
@@ -33,13 +28,13 @@ const Questionnaire = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "CALCULATE_SCORE" });
-    // displatch a calculate result reducer action that returns object values to populate our result box
     // console.log(showResultCategory(state.score));
     dispatch({ type: "GET_RESULT" });
     console.log(
       `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
     );
     console.log(`Name: ${state.name}, Score: ${state.score}`);
+    setShowResult(true);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -100,7 +95,8 @@ const Questionnaire = () => {
             <button type="submit">Submit</button>
           )}
         </div>
-      </form>{" "}
+      </form>
+
       {showResult && result}
     </div>
   );
