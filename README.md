@@ -15,7 +15,7 @@ Next:
 - once scores are generated push scores to Firebase, grab them and put them in a leaderboard component.
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation)
 
-Struggles:
+Struggles(conquered):
 
 - writting a good clean reducer function that transforms input answers into a score (number)
 - fixind default radio input behaviour that made it so for each newly generated form we had a previously checked radio input, that if left as is didn't call on my reducer function that incremented score when user clicked next

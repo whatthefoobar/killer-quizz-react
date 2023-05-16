@@ -28,7 +28,6 @@ const Questionnaire = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "CALCULATE_SCORE" });
-    // console.log(showResultCategory(state.score));
     dispatch({ type: "GET_RESULT" });
     console.log(
       `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
