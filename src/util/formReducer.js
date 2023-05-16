@@ -1,9 +1,21 @@
+import { resultCategories } from "./data";
+import p1 from "../assets/1.gif";
+import p2 from "../assets/2.gif";
+import p3 from "../assets/3.gif";
+import p4 from "../assets/4.gif";
+
 export const initialState = {
   score: 0,
   name: "",
   answers: [],
   currentQuestionIndex: 0,
+  result: {
+    image: "",
+    title: "",
+    description: "",
+  },
 };
+
 export const formReducer = (state, action) => {
   switch (action.type) {
     case "SELECT_ANSWER":
@@ -31,8 +43,50 @@ export const formReducer = (state, action) => {
             return acc;
         }
       }, 0);
-
       return { ...state, score };
+    // case "GET_RESULT": f that grabs score n and returns an image text and description obj see example below
+    case "GET_RESULT":
+      switch (true) {
+        case state.score > 0 && state.score <= 10:
+          return {
+            ...state,
+            result: {
+              image: p1,
+              title: resultCategories[0].title,
+              description: resultCategories[0].description,
+            },
+          };
+        case state.score > 10 && state.score <= 20:
+          return {
+            ...state,
+            result: {
+              image: p2,
+              title: resultCategories[1].title,
+              description: resultCategories[1].description,
+            },
+          };
+        case state.score > 20 && state.score <= 30:
+          return {
+            ...state,
+            result: {
+              image: p3,
+              title: resultCategories[2].title,
+              description: resultCategories[2].description,
+            },
+          };
+        case state.score > 10 && state.score <= 40:
+          return {
+            ...state,
+            result: {
+              image: p4,
+              title: resultCategories[3].title,
+              description: resultCategories[3].description,
+            },
+          };
+        default:
+          return { ...state };
+      }
+
     default:
       throw new Error();
   }
