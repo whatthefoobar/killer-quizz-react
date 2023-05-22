@@ -5,14 +5,17 @@ Currently works:
 - answers are selected and a socore is assigned based on which answers are selected
 - name input is grabbed
 - on Submit we get a console.log of the score and username
+- onSubmit of the name a name and a generated score is pushed to firebase realtime databases
+- have a minimal backend that comunicates with the FB database with a few GET, POST requests
+  -the frontend gets the data grabbed by the backend and then using a reducer manipulates data to then push back unto the db
 
 Next:
 
 - create function with results based on score number (done)
 - show results based on score obtained (done)
-- show result box after username inputs their name (HERE)
+- show result box after username inputs their name (Done but imprefectly, should show up after name is inputed nut before)
 - migrate both q&a data and results data to Firebase
-- once scores are generated push scores to Firebase, grab them and put them in a leaderboard component.
+- once scores are generated push scores to Firebase(DONE), grab them and put them in a leaderboard component.
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation)
 
 Struggles(conquered):
