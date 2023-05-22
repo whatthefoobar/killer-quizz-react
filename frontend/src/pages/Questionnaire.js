@@ -34,10 +34,6 @@ const Questionnaire = () => {
     console.log(questions);
   }, []);
 
-  useEffect(() => {
-    console.log(questions);
-  }, [questions]);
-
   const handleAnswerSelect = (answer) => {
     dispatch({ type: "SELECT_ANSWER", payload: answer });
   };
@@ -62,7 +58,27 @@ const Questionnaire = () => {
       `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
     );
     console.log(`Name: ${state.name}, Score: ${state.score}`);
+    if (state.name !== "") {
+      postData({ name: state.name, score: state.score });
+    }
+
     setShowResult(true);
+  };
+
+  const postData = async (data) => {
+    const response = await fetch("http://localhost:3000/scores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      console.log("Data successfully pushed to the server!");
+    } else {
+      console.error("Failed to push data to the server.");
+    }
   };
 
   const currentQuestion = questions[currentQuestionIndex];

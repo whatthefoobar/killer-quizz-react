@@ -14,6 +14,9 @@ admin.initializeApp({
 const app = express();
 app.use(cors());
 
+// Body parsing middleware
+app.use(express.json());
+
 // this gets my questionnaire qa data
 app.get("/data", (req, res) => {
   const database = admin.database();
@@ -47,6 +50,16 @@ app.get("/result-categories", (req, res) => {
       res.status(500).json({ error: "Failed to fetch data from Firebase" });
     }
   );
+});
+
+app.post("/scores", (req, res) => {
+  const data = req.body;
+
+  // Push the data to Firebase Realtime Database
+  const ref = admin.database().ref("/scores");
+  ref.push(data);
+
+  res.sendStatus(200);
 });
 
 // upload a list of data to fb example, this uploads it in the exact object order i creted it
