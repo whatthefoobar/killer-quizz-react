@@ -7,7 +7,7 @@ Currently works:
 - on Submit we get a console.log of the score and username
 - onSubmit of the name a name and a generated score is pushed to firebase realtime databases
 - have a minimal backend that comunicates with the FB database with a few GET, POST requests
-  -the frontend gets the data grabbed by the backend and then using a reducer manipulates data to then push back unto the db
+- the frontend gets the data grabbed by the backend from our db and then using a reducer manipulates data to then push back unto the db.
 
 Next:
 
