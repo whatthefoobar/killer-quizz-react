@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./assets/scary-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #333;
+}
+
+.start-page {
+  /* border: 2px solid pink; */
+  text-align: center;
+  margin-top: 20vh;
+  padding: 40px;
+}
+.start-page button {
+  margin: 30px 0;
+  padding: 5px 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+}

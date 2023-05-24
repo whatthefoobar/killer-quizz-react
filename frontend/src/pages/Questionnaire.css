@@ -1,8 +1,8 @@
 .questionnaire {
-  border: 2px solid pink;
+  border: 3px solid pink;
   padding: 20px;
   width: 600px;
-  margin: 15vh auto;
+  margin: 12vh auto;
 }
 
 .questionnaire form {
@@ -28,6 +28,7 @@
 }
 .questionnaire--qna label {
   align-self: center;
+  font-size: 20px;
 }
 
 .questionnaire--buttons {
@@ -36,20 +37,21 @@
 }
 
 .questionnaire--buttons button {
-  padding: 5px 10px;
+  padding: 5px 12px;
   font-size: 18px;
   border-radius: 5px;
   border: none;
 }
 /* result box styling */
 .resultBox {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .result-img {
   width: 100%;
   padding-bottom: 30px;
 }
-
-.hide {
-  display: none;
+.resultBox p {
+  padding: 10px 0;
+  font-size: 19px;
+  font-weight: 600;
 }

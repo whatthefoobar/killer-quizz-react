@@ -1,10 +1,22 @@
+import { useState } from "react";
 import "./App.css";
 import Questionnaire from "./pages/Questionnaire";
 
 export const URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
-  return <Questionnaire />;
+  const [isNext, setIsNext] = useState(false);
+  const startQuestionnaire = () => {
+    setIsNext(true);
+  };
+  const intro = (
+    <div className="start-page">
+      <h2>What serial killer would you be? take the test and find out</h2>
+
+      <button onClick={startQuestionnaire}>Start</button>
+    </div>
+  );
+  return <>{!isNext ? intro : <Questionnaire />}</>;
 }
 
 export default App;
