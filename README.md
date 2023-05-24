@@ -24,3 +24,14 @@ Struggles(conquered):
 
 - writting a good clean reducer function that transforms input answers into a score (number)
 - fixind default radio input behaviour that made it so for each newly generated form we had a previously checked radio input, that if left as is didn't call on my reducer function that incremented score when user clicked next
+
+Preview (before deployment):
+
+![1](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/c66182f8-1576-4b8c-bab9-05c51a3949d1)
+
+![2](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/fa4ee694-6b23-4e35-aaf6-ae6addd2e10b)
+
+![3](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/e537b718-9fd7-4db8-9d63-dc98552f0fd7)
+
+![4](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/512bb94e-aa7c-4bd6-bfd8-ca388e67ee64)
+
