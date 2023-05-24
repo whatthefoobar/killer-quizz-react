@@ -11,7 +11,7 @@ function App() {
   };
   const intro = (
     <div className="start-page">
-      <h2>What serial killer would you be? take the test and find out</h2>
+      <h1>What serial killer would you be? take the test and find out</h1>
 
       <button onClick={startQuestionnaire}>Start</button>
     </div>
