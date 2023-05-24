@@ -11,11 +11,12 @@ Currently works:
 
 Next:
 
-- create function with results based on score number (done)
-- show results based on score obtained (done)
-- show result box after username inputs their name (Done but imprefectly, should show up after name is inputed nut before)
-- migrate both q&a data and results data to Firebase
-- once scores are generated push scores to Firebase(DONE), grab them and put them in a leaderboard component.
+- create function with results based on score number (DONE)
+- show results based on score obtained (DONE)
+- show result box after username inputs their name (DONE)
+- migrate both q&a data and results data to Firebase(DONE)
+- once scores are generated push scores to Firebase(DONE),
+- grab scores from FB and put them in a leaderboard component.
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation)
 
 Struggles(conquered):

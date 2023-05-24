@@ -32,7 +32,6 @@ const Questionnaire = () => {
       .catch((error) => {
         console.error(error);
       });
-    console.log(questions);
   }, []);
 
   const handleAnswerSelect = (answer) => {
@@ -61,30 +60,12 @@ const Questionnaire = () => {
     console.log(`Name: ${state.name}, Score: ${state.score}`);
     if (state.name !== "") {
       postData({ name: state.name, score: state.score });
-    }
 
-    setShowResult(true);
-  };
-
-  const postData = async (data) => {
-    const response = await fetch(`${URL}/scores`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      console.log("Data successfully pushed to the server!");
-    } else {
-      console.error("Failed to push data to the server.");
+      setShowResult(true);
     }
   };
 
-  const currentQuestion = questions[currentQuestionIndex];
-
-  const result = (
+  let result = (
     <div className="resultBox">
       <img className="result-img" src={state.result.image} alt="result" />
       <h2>{state.result.title}</h2>
@@ -92,9 +73,29 @@ const Questionnaire = () => {
     </div>
   );
 
+  const postData = async (data) => {
+    try {
+      const response = await axios.post(`${URL}/scores`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status === 200) {
+        console.log("Data successfully pushed to the server!");
+      } else {
+        console.error("Failed to push data to the server.");
+      }
+    } catch (error) {
+      console.error("An error occurred while sending the POST request:", error);
+    }
+  };
+
+  const currentQuestion = questions[currentQuestionIndex];
+
   return (
     <div className="questionnaire">
-      {questions.length > 0 && (
+      {questions.length > 0 && !showResult && (
         <form onSubmit={handleSubmit}>
           <div className="questionnaire--qna">
             <h2>{currentQuestion.question}</h2>
@@ -144,7 +145,7 @@ const Questionnaire = () => {
         </form>
       )}
 
-      {showResult && result}
+      {showResult && state.name !== "" && result}
     </div>
   );
 };
