@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import "./Questionnaire.css";
 import axios from "axios";
+import { URL } from "../App";
 // import { questions } from "../util/data";
 
 import { initialState, formReducer } from "../util/formReducer";
@@ -24,7 +25,7 @@ const Questionnaire = () => {
   // now grab questions data not from util but from FB here
   useEffect(() => {
     axios
-      .get("http://localhost:3000/data") // Replace with your server endpoint URL
+      .get(`${URL}/data`) // Replace with your server endpoint URL
       .then((response) => {
         setQuestions(removeIdsFromArray(response.data));
       })
@@ -66,7 +67,7 @@ const Questionnaire = () => {
   };
 
   const postData = async (data) => {
-    const response = await fetch("http://localhost:3000/scores", {
+    const response = await fetch(`${URL}/scores`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
