@@ -16,8 +16,9 @@ Next:
 - show result box after username inputs their name (DONE)
 - migrate both q&a data and results data to Firebase(DONE)
 - once scores are generated push scores to Firebase(DONE),
+- add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation from group project)(in progress)
 - grab scores from FB and put them in a leaderboard component.
-- add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation)
+- deploy to render
 
 Struggles(conquered):
 
