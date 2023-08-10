@@ -1,5 +1,4 @@
 import { resultCategories } from "./data";
-// import { p1, p2, p3, p4 } from "./assets.js";
 
 export const initialState = {
   score: 0,
@@ -50,9 +49,6 @@ export const formReducer = (state, action) => {
             ...state,
             result: {
               ...resultCategories[0],
-              // image: p1,
-              // title: resultCategories[0].title,
-              // description: resultCategories[0].description,
             },
           };
         case state.score > 10 && state.score <= 20:
@@ -60,9 +56,6 @@ export const formReducer = (state, action) => {
             ...state,
             result: {
               ...resultCategories[1],
-              // image: p2,
-              // title: resultCategories[1].title,
-              // description: resultCategories[1].description,
             },
           };
         case state.score > 20 && state.score <= 30:
@@ -70,9 +63,6 @@ export const formReducer = (state, action) => {
             ...state,
             result: {
               ...resultCategories[2],
-              // image: p3,
-              // title: resultCategories[2].title,
-              // description: resultCategories[2].description,
             },
           };
         case state.score > 10 && state.score <= 40:
@@ -80,9 +70,6 @@ export const formReducer = (state, action) => {
             ...state,
             result: {
               ...resultCategories[3],
-              // image: p4,
-              // title: resultCategories[3].title,
-              // description: resultCategories[3].description,
             },
           };
         default:

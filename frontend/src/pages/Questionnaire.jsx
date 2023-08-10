@@ -6,7 +6,6 @@ import { initialState, formReducer } from "../util/formReducer";
 
 const Questionnaire = () => {
   const URL = "http://localhost:5000";
-
   const [state, dispatch] = useReducer(formReducer, initialState);
   const { currentQuestionIndex, answers } = state;
   const [showResult, setShowResult] = useState(false);
