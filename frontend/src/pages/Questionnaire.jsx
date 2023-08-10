@@ -1,9 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
-// const URL = import.meta.env.REACT_APP_SERVER_URL;
 import "./Questionnaire.css";
 import axios from "axios";
-// import { URL } from "../App";
-// import { questions } from "../util/data";
 
 import { initialState, formReducer } from "../util/formReducer";
 
@@ -57,10 +54,10 @@ const Questionnaire = () => {
     e.preventDefault();
     dispatch({ type: "CALCULATE_SCORE" });
     dispatch({ type: "GET_RESULT" });
-    console.log(
-      `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
-    );
-    console.log(`Name: ${state.name}, Score: ${state.score}`);
+    // console.log(
+    //   `Result: ${state.result.image}, ${state.result.title} ${state.result.description}`
+    // );
+    // console.log(`Name: ${state.name}, Score: ${state.score}`);
     if (state.name !== "") {
       postData({ name: state.name, score: state.score });
 
