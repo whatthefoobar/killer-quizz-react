@@ -2,9 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import Questionnaire from "./pages/Questionnaire";
 
-export const URL = process.env.REACT_APP_SERVER_URL;
+// export const URL = process.env.REACT_APP_SERVER_URL;
+// export const URL = "http://localhost:5000";
 
 function App() {
+  console.log(URL);
   const [isNext, setIsNext] = useState(false);
   const startQuestionnaire = () => {
     setIsNext(true);

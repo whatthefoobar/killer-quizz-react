@@ -1,12 +1,15 @@
-import React, { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+// const URL = import.meta.env.REACT_APP_SERVER_URL;
 import "./Questionnaire.css";
 import axios from "axios";
-import { URL } from "../App";
+// import { URL } from "../App";
 // import { questions } from "../util/data";
 
 import { initialState, formReducer } from "../util/formReducer";
 
 const Questionnaire = () => {
+  const URL = "http://localhost:5000";
+  console.log(URL);
   const [state, dispatch] = useReducer(formReducer, initialState);
   const { currentQuestionIndex, answers } = state;
   const [showResult, setShowResult] = useState(false);
@@ -67,7 +70,7 @@ const Questionnaire = () => {
 
   let result = (
     <div className="resultBox">
-      <img className="result-img" src={state.result.image} alt="result" />
+      <img className="result-img" src={state.result.img} alt="result" />
       <h2>{state.result.title}</h2>
       <p>{state.result.description}</p>
     </div>
