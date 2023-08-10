@@ -15,6 +15,7 @@ const Questionnaire = () => {
   const removeIdsFromArray = (array) => {
     // Extract the values from the object and remove the IDs
     const newArray = Object.values(array).map((obj) => {
+      // eslint-disable-next-line no-unused-vars
       const { id, ...rest } = obj;
       return rest;
     });
