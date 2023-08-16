@@ -4,11 +4,29 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background-image: url("./img/scary-img.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   color: #333;
+} */
+body {
+  overflow-y: hidden;
+  color: #333;
+}
+body::before {
+  content: "";
+  position: fixed;
+  background-image: url("./img/scary-img.jpg");
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .start-page {
