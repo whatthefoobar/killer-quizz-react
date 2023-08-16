@@ -20,6 +20,7 @@
 }
 .questionnaire--qna h2 {
   margin-bottom: 10px;
+  text-align: center;
 }
 .questionnaire--qna input {
   padding: 5px 10px;
