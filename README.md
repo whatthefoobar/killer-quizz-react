@@ -16,9 +16,10 @@ Next:
 - show result box after username inputs their name (DONE)
 - migrate both q&a data and results data to Firebase(DONE)
 - once scores are generated push scores to Firebase(DONE),
+- deploy to render by 2 repos (DONE)
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation from group project)(in progress)
 - grab scores from FB and put them in a leaderboard component.
-- deploy to render (DONE)
+- redeploy to render , currently not optimal, we can deploy it as fullstack from one repo, easier to maintain
 
 Struggles(conquered):
 
@@ -34,4 +35,3 @@ Preview (before deployment):
 ![3](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/e537b718-9fd7-4db8-9d63-dc98552f0fd7)
 
 ![4](https://github.com/whatthefoobar/killer-questionaire-react/assets/69626975/512bb94e-aa7c-4bd6-bfd8-ca388e67ee64)
-
