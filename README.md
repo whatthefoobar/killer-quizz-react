@@ -18,7 +18,8 @@ Next:
 - once scores are generated push scores to Firebase(DONE),
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation from group project)(in progress)
 - grab scores from FB and put them in a leaderboard component.
-- deploy to render
+- deploy to render DONE (using 2 git repos one for frontend one for backend -not ideal) (DONE)
+- deploy to render as a service app using only one git repo.
 
 Struggles(conquered):
 
