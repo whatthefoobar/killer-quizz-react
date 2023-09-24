@@ -1,7 +1,7 @@
 .questionnaire {
   border: 3px solid pink;
   padding: 20px;
-  width: 600px;
+  max-width: 600px;
   margin: 12vh auto;
 }
 
