@@ -12,16 +12,18 @@ admin.initializeApp({
 });
 
 const app = express();
-app.use(
-  cors({
-    origin: [
-      // "http://localhost:5000",
-      "http://127.0.0.1:5173",
-      "https://killer-questionnaire-frontend.onrender.com",
-      //when deployed
-    ],
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: [
+//       // "http://localhost:5000",
+//       "http: //localhost:5173/",
+//       "http://127.0.0.1:5173",
+//       "https://killer-questionnaire-frontend.onrender.com",
+//       //when deployed
+//     ],
+//   })
+// );
 
 // Body parsing middleware
 app.use(express.json());
