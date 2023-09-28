@@ -1,4 +1,4 @@
-import { resultCategories } from "./data";
+import { resultCategories } from "./data.js";
 
 export const initialState = {
   score: 0,

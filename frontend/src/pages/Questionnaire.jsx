@@ -5,11 +5,11 @@ import axios from "axios";
 import { initialState, formReducer } from "../util/formReducer";
 
 const Questionnaire = () => {
-  const URL = "/api";
   const [state, dispatch] = useReducer(formReducer, initialState);
   const { currentQuestionIndex, answers } = state;
   const [showResult, setShowResult] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const removeIdsFromArray = (array) => {
     // Extract the values from the object and remove the IDs
@@ -24,14 +24,16 @@ const Questionnaire = () => {
 
   // now grab questions data not from util but from FB here
   useEffect(() => {
+    setIsLoading(true);
     axios
-      .get(`${URL}/data`) // Replace with your server endpoint URL
+      .get(`/data`) // Replace with your server endpoint URL
       .then((response) => {
         setQuestions(removeIdsFromArray(response.data));
       })
       .catch((error) => {
         console.error(error);
       });
+    setIsLoading(false);
   }, []);
 
   const handleAnswerSelect = (answer) => {
@@ -75,7 +77,7 @@ const Questionnaire = () => {
 
   const postData = async (data) => {
     try {
-      const response = await axios.post(`${URL}/scores`, data, {
+      const response = await axios.post(`/scores`, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -95,6 +97,7 @@ const Questionnaire = () => {
 
   return (
     <div className="questionnaire">
+      {isLoading && <p>Loading...</p>}
       {questions.length > 0 && !showResult && (
         <form onSubmit={handleSubmit}>
           <div className="questionnaire--qna">

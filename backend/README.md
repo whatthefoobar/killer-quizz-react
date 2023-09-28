@@ -1,1 +1,0 @@
-# killer-questionnaire-backend
