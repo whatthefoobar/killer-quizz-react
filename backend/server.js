@@ -6,7 +6,7 @@ require("dotenv").config();
 // const { v4: uuidv4 } = require("uuid");
 
 // Initialize Firebase admin SDK
-const serviceAccount = require("./killer-questionnaire-firebase-adminsdk.json");
+const serviceAccount = require("../killer-questionnaire-firebase-adminsdk.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: process.env.DATABASE_URL,
