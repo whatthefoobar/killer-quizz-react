@@ -17,9 +17,12 @@ Next:
 - migrate both q&a data and results data to Firebase(DONE)
 - once scores are generated push scores to Firebase(DONE),
 - deploy to render by 2 repos (DONE)
+- redeploy to render , currently not optimal, we can deploy it as fullstack from one repo, easier to maintain (DONE)
+- add skeleton loading or a loader
+- add tests
 - add CSS styles, bg image, minimal bg sound (optional: the blood splatter animation from group project)(in progress)
 - grab scores from FB and put them in a leaderboard component.
-- redeploy to render , currently not optimal, we can deploy it as fullstack from one repo, easier to maintain
+
 
 Struggles(conquered):
 
